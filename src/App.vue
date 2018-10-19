@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="container">
+        <ProgressBar :quoteCount="quotes.length" :maxQuotes="maxQuotes"/>
+        <QuoteNew @quoteAdded="addQuote"/>
+        <QuoteGrid :quotes="quotes" @quoteDeleted="deleteQuote"/>
+        <AlertMessage />
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import ProgressBar from './components/ProgressBar.vue';
+    import QuoteNew from './components/QuoteNew.vue';
+    import QuoteGrid from './components/QuoteGrid.vue';
+    import AlertMessage from './components/AlertMessage.vue';
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        data() {
+            return {
+                quotes: ['First test quote'],
+                maxQuotes: 10
+            };
+        },
+        components: {
+            QuoteGrid, QuoteNew, AlertMessage, ProgressBar
+        },
+        methods: {
+            addQuote(quote){
+                if(this.quotes.length >= this.maxQuotes) {
+                    return alert('Please, delete Quotes first!');
+                }
+                if(quote.length == 0){
+                    return alert('Please, fill text of Quote.');
+                }
+                this.quotes.push(quote);
+            },
+            deleteQuote(index){
+                this.quotes.splice(index, 1);
+            }
+        }
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
