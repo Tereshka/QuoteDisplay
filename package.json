@@ -9,13 +9,13 @@
     "deploy": "push-dir --allow-unclean --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.5",
-    "@vue/cli-plugin-eslint": "^3.0.5",
-    "@vue/cli-service": "^3.0.5",
-    "vue-template-compiler": "^2.5.17"
+    "@vue/cli-plugin-babel": "^3.9.2",
+    "@vue/cli-plugin-eslint": "^3.9.2",
+    "@vue/cli-service": "^3.9.3",
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,
